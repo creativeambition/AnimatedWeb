@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>INFINITY</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="nav-bar">
+        <h1>infinity</h1>
+        <div class="control-bar">
+          <box-icon class="menu account" name="user"></box-icon>
+          <box-icon class="menu" name="menu-alt-right"></box-icon>
+        </div>
+      </div>
+
+      <div class="logo-container">
+        <div class="logo">
+          <div class="mini-logo"></div>
+          <div class="semi-mini-logo"></div>
+        </div>
+        <div class="semi-logo"></div>
+      </div>
+
+      <div class="text-container">
+        <h1>
+          infinity
+          <h2>studios</h2>
+        </h1>
+
+        <h3>
+          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Accusantium
+          reiciendis deserunt perspiciatis, veniam temporibus vero impedit,
+          praesentium atque qui debitis saepe?
+        </h3>
+
+        <button class="discover"><span>discover</span></button>
+      </div>
+    </div>
+
+    <div class="curtain c1" style="--i: 1"></div>
+    <div class="curtain c2" style="--i: 2"></div>
+    <div class="curtain c3" style="--i: 3"></div>
+
+    <div class="discover-page">
+      <div class="return">
+        <box-icon class="ret left" type="solid" name="chevron-left"></box-icon>
+
+        <box-icon
+          class="ret right"
+          type="solid"
+          name="chevron-right"
+        ></box-icon>
+      </div>
+
+      <div class="pane-container">
+        <div class="pane" style="--j: 1">
+          <h4>01</h4>
+          <div class="txt-container">
+            <img src="./imgs/performance.gif" alt="" />
+            <h1>performance</h1>
+            <h3>- performance tracking</h3>
+            <span>Lorem ipsum dolor sit amet, adipisicing elit! </span>
+            <ul>
+              <li>Consectetur adipisicing facilis?</li>
+              <li>Sed earum in ex quos repellats?</li>
+              <li>At cum necessitatibus unde ut?</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="pane" style="--j: 2">
+          <h4>02</h4>
+          <div class="txt-container">
+            <img src="./imgs/cloud-network.gif" alt="" />
+            <h1>cloud services</h1>
+            <h3>- best cloud services providers</h3>
+            <span>Lorem ipsum dolor sit amet consectetur.</span>
+            <ul>
+              <li>Lorem ipsum dolor sit amet.</li>
+              <li>Consectetur adipisicing facilis?</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="pane" style="--j: 3">
+          <h4>03</h4>
+          <div class="txt-container">
+            <img src="./imgs/media.gif" alt="" />
+            <h1>media</h1>
+            <h3>- media devices & personnels</h3>
+            <span>Lorem ipsum dolor, sit amet consectetur.</span>
+            <ul>
+              <li>Lorem ipsum dolor sit amet.</li>
+              <li>Ab maiores eligendi animi at.</li>
+              <li>Fugiat voluptatem repellat.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="pane" style="--j: 4">
+          <h4>04</h4>
+          <div class="txt-container">
+            <img src="./imgs/security.gif" alt="" />
+            <h1>security</h1>
+            <h3>- high security</h3>
+            <span
+              >Lorem ipsum dolor, sit amet consectetur adipisicing elit.</span
+            >
+            <ul>
+              <li>Fugiat corporis voluptatem repellat.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="pane" style="--j: 5">
+          <h4>05</h4>
+          <div class="txt-container">
+            <img src="./imgs/tech-support.gif" alt="" />
+            <h1>tech-support</h1>
+            <h3>- support from experts</h3>
+            <span
+              >Lorem ipsum dolor, sit amet consectetur adipisicing elit.</span
+            >
+            <ul>
+              <li>Lorem ipsum dolor sit amet.</li>
+              <li>Consectetur adipisicing facilis?</li>
+              <li>Ab maiores eligendi animi at.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      const panes = document.querySelectorAll('.pane-container .pane');
+
+      for (let j = 0; j < panes.length; j++) {
+        const btn = document.createElement('div');
+        btn.classList.add('btn');
+
+        btn.innerHTML = `  <box-icon class="menu" name="right-arrow-alt"></box-icon>`;
+        panes[j].appendChild(btn);
+
+        panes[j].addEventListener('mouseover', () => {
+          panes.forEach((pane) => {
+            pane.style.background = 'rgba(0, 0, 0, 0.552)';
+          });
+          panes[j].style.background = 'transparent';
+        });
+
+        panes[j].addEventListener('mouseout', () => {
+          panes.forEach((pane) => {
+            pane.style.background = '';
+          });
+          panes[j].style.background = '';
+        });
+      }
+
+      const btn = document.querySelector('.discover');
+      const curtains = document.querySelectorAll('.curtain');
+      const discover_page = document.querySelector('.discover-page');
+      const pane_container = document.querySelector('.pane-container');
+
+      btn.addEventListener('click', discoverPage);
+
+      function discoverPage() {
+        curtains.forEach((curtain) => {
+          curtain.classList.add('active');
+        });
+        discover_page.classList.add('active');
+      }
+
+      const back = document.querySelector('.ret.left');
+      const nxt = document.querySelector('.ret.right');
+
+      back.addEventListener('click', () => {
+        curtains.forEach((curtain) => {
+          curtain.classList.remove('active');
+        });
+        discover_page.classList.remove('active');
+      });
+
+      var index = 0;
+
+      function nxtpane() {
+        panes.forEach((pane) => {
+          pane.style.background = 'rgba(0, 0, 0, 0.552)';
+        });
+
+        panes[index].style.background = 'transparent';
+
+        index++;
+
+        if (index >= panes.length) {
+          index = 0;
+        }
+      }
+
+      nxt.addEventListener('click', nxtpane);
+    </script>
+    <script src="https://unpkg.com/boxicons@2.1.1/dist/boxicons.js"></script>
+  </body>
+</html>
